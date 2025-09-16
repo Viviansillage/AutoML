@@ -185,7 +185,7 @@ st.markdown("""
 
     """)
 
-    st.divider()
+st.divider()
 file = st.file_uploader("Upload a CSV (or .csv.gz)", type=["csv", "gz"])
 if not file:
     st.info("Please upload a dataset to begin.")
