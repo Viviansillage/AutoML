@@ -168,8 +168,24 @@ def plot_grouped_metrics_altair(res_df, metrics, title="", fixed_domain_01=False
                         use_container_width=True)
 
 # ---------- UI ----------
-st.title("Mini AutoML (Upload → Metrics)")
+st.title("Welcome to Mini AutoML")
+st.markdown("""
+    Meet **Mini AutoML** — your no-fuss, one-screen machine-learning helper.
+    
+    Upload a CSV (or .csv.gz), pick your target, and Mini AutoML does the rest: it auto-detects whether you’re doing **classification** or **regression**, builds a clean preprocessing pipeline (missing-value imputation, one-hot encoding, numeric scaling), and runs **three classic models** out of the box: **Logistic Regression, Random Forest,** and **Gradient Boosting**.
+    
+    Under the hood, it uses **K-fold cross-validation** and shows crisp, comparable metrics:
+    
+    * Classification: **Accuracy, Precision (macro), Recall (macro), F1 (macro), AUC**
+    * Regression: **RMSE, MAE, R²**
+    
+    Results land in a tidy table plus a **single interactive grouped bar chart** (hover a metric to spotlight it!). Smart safeguards keep things smooth: folds adjust automatically for tiny classes, AUC appears only when it’s valid, and errors come with clear guidance.
+    
+    Built with **Streamlit + scikit-learn + Altair**, Mini AutoML turns “which model should I use?” into a quick, visual decision. Upload, run, compare — and walk away with a best model you can defend.
 
+    """)
+
+    st.divider()
 file = st.file_uploader("Upload a CSV (or .csv.gz)", type=["csv", "gz"])
 if not file:
     st.info("Please upload a dataset to begin.")
