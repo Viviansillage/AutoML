@@ -337,8 +337,7 @@ if run_clicked or "auto_ran" not in st.session_state:
         plot_grouped_metrics_altair(
             res, ["RMSE", "MAE", "R2"],
             title="Models vs. Metrics (hover a metric to isolate it)",
-            fixed_domain_01=False,
-            caption="RMSE/MAE lower is better, R² higher is better"
+            fixed_domain_01=False
         )
 
         st.success(f"Best model by RMSE: **{best_row['Model']}** "
