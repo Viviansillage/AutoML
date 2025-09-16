@@ -318,7 +318,7 @@ if run_clicked or "auto_ran" not in st.session_state:
 
         # One combined chart with interactive highlight
         metrics_to_plot = [m for m in ["F1_macro", "Accuracy", "Precision_macro", "Recall_macro", "AUC_macro"] if m in res.columns]
-        st.subheader("Model comparison — all metrics in one figure")
+        st.subheader("Model comparison")
         plot_grouped_metrics_altair(
             res, metrics_to_plot,
             title="Models vs. Metrics (hover a metric to isolate it)",
@@ -333,11 +333,12 @@ if run_clicked or "auto_ran" not in st.session_state:
         st.dataframe(res, use_container_width=True)
 
         best_row = res.sort_values("RMSE", ascending=True).iloc[0]
-        st.subheader("Model comparison — all metrics in one figure")
+        st.subheader("Model comparison")
         plot_grouped_metrics_altair(
             res, ["RMSE", "MAE", "R2"],
-            title="Models vs. Metrics (RMSE/MAE lower is better, R² higher is better)",
-            fixed_domain_01=False
+            title="Models vs. Metrics (hover a metric to isolate it)",
+            fixed_domain_01=False,
+            caption="RMSE/MAE lower is better, R² higher is better"
         )
 
         st.success(f"Best model by RMSE: **{best_row['Model']}** "
